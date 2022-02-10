@@ -1,0 +1,18 @@
+<div class="welcome" [ngStyle]="{'background-image': 'url('+ cocktails[0].strDrinkThumb +')'}">
+    <div>
+        <h1 class="text-center">Welcome to CocktailsApp</h1>
+        <form>
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Search cocktail">
+                </div>
+            </div>
+        </form>
+        <div>
+            <h2 class="text-center mt-5">Or browse By Name</h2>
+        </div>
+        <div class="mt-5">
+            <a *ngFor="let letter of alphabet" href="#">  {{ letter | uppercase }}  </a>
+        </div>
+    </div>
+</div>

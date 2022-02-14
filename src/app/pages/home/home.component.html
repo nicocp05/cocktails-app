@@ -1,10 +1,10 @@
-<div class="welcome" [ngStyle]="{'background-image': 'url('+ cocktails[0].strDrinkThumb +')'}">
+<div *ngIf="load" id="welcome" class="welcome" [ngStyle]="{'background-image': 'url('+ cocktails[0].strDrinkThumb +')'}">
     <div>
         <h1 class="text-center">Welcome to CocktailsApp</h1>
-        <form>
+        <form (ngSubmit)="onSubmit(form)" #form="ngForm">
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Search cocktail">
+                    <input type="text" class="form-control" name="search" placeholder="Search cocktail" [ngModel]="formValue">
                 </div>
             </div>
         </form>
@@ -12,7 +12,7 @@
             <h2 class="text-center mt-5">Or browse By Name</h2>
         </div>
         <div class="mt-5">
-            <a *ngFor="let letter of alphabet" href="#">  {{ letter | uppercase }}  </a>
+            <a [routerLink]="['/search', letter]" *ngFor="let letter of alphabet">  {{ letter | uppercase }}  </a>
         </div>
     </div>
 </div>

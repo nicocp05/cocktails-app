@@ -11,7 +11,7 @@ const routes: Routes = [
     component: PagesComponent,
     children: [
       { path: 'home', component: HomeComponent },
-      { path: 'search', component: SearchComponent },
+      { path: 'search/:name', component: SearchComponent },
       { path: 'cocktail/:id', component: CocktailComponent },
       { path: '', redirectTo: 'home' , pathMatch: 'full' }
     ]

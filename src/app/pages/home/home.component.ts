@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { getCocktails } from 'src/app/actions/cocktail.action';
-import { AppState } from 'src/app/interfaces/app-state';
 import { Cocktail } from 'src/app/interfaces/cocktail';
 import { CocktailsService } from 'src/app/services/cocktails.service';
+import { searchByName } from 'src/app/state/actions/cocktail.actions';
 
 @Component({
   selector: 'app-home',
@@ -13,22 +14,32 @@ import { CocktailsService } from 'src/app/services/cocktails.service';
 export class HomeComponent implements OnInit {
   
   public cocktails: Cocktail[] = [];
+  public formValue: string = '';
   public alphabet: string[] = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','ñ','o','p','q','r','s','t','u','v','w','x','y','z'];
+  public load: boolean = true;
 
   constructor( 
     private cocktailsService: CocktailsService,
-    private store: Store<AppState>
+    private router: Router,
+    private store: Store
   ){}
 
   ngOnInit(): void {
     this.getCocktails();
   }
 
+  public onSubmit( form: NgForm ) {
+    this.formValue = form.value.search;
+    this.store.dispatch(searchByName());
+    this.router.navigate(['/search', this.formValue]);
+  }
+
   public getCocktails(): void {
+    this.load = false;
     this.cocktailsService.getCocktails()
     .subscribe( (cocktails: Cocktail[]) => {
       this.cocktails = cocktails;
-      this.store.dispatch( getCocktails({ cocktails: [...this.cocktails]}) );
+      this.load = true;
     });
   }
   

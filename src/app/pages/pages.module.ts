@@ -7,8 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { SharedModule } from '../shared/shared.module';
 import { PagesComponent } from './pages.component';
 import { SearchComponent } from './search/search.component';
-
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,8 @@ import { SearchComponent } from './search/search.component';
   imports: [
     CommonModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ],
   exports: [
     HomeComponent,

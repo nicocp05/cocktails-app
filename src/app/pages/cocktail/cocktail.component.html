@@ -1,1 +1,25 @@
-<p class="text-primary mt-5"> {{ cocktail.strDrink }} </p>
+<div *ngIf="load" class="animate__animated animate__fadeIn">
+    <div class="row mt-5">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h1>{{ cocktail.strDrink }}</h1>
+                </div>
+                <img class="card-img-bottom" [src]="cocktail.strDrinkThumb" alt="Card image cap">
+            </div>
+            
+            
+        </div>
+        <div class="col">
+            <h1>Instructions</h1>
+            <p>{{ cocktail.strInstructions }}</p>
+            <h2>Ingredients</h2>
+            <div class="row">
+                <div *ngFor="let ingredient of ingredients" class="col">
+                    {{ ingredient }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-spinner *ngIf="!load"></app-spinner>

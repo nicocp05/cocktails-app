@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   public cocktails: Cocktail[] = [];
   public formValue: string = '';
   public alphabet: string[] = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','ñ','o','p','q','r','s','t','u','v','w','x','y','z'];
-  public load: boolean = true;
+  public load: boolean = false;
 
   constructor( 
     private cocktailsService: CocktailsService,
@@ -35,11 +35,12 @@ export class HomeComponent implements OnInit {
   }
 
   public getCocktails(): void {
-    this.load = false;
     this.cocktailsService.getCocktails()
     .subscribe( (cocktails: Cocktail[]) => {
       this.cocktails = cocktails;
-      this.load = true;
+      setTimeout(() => {
+        this.load = true;
+      }, 500);
     });
   }
   

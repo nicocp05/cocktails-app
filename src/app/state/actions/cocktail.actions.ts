@@ -17,5 +17,14 @@ export const randomCocktail = createAction(
 );
 
 export const searchByName = createAction(
-  '[Search] Search by name boolean'
+  '[Search boolean] Search by name boolean'
 )
+
+export const deactivateSearchByName = createAction(
+  '[Search boolean] Deactivate search by name boolean'
+);
+
+export const cocktailDetail = createAction(
+  '[Cocktail] Cocktail detail by id',
+  props<{ cocktail: Cocktail }>()
+);

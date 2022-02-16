@@ -1,4 +1,4 @@
-<div *ngIf="load" id="welcome" class="welcome" [ngStyle]="{'background-image': 'url('+ cocktails[0].strDrinkThumb +')'}">
+<div *ngIf="load" id="welcome" class="welcome animate__animated animate__fadeIn" [ngStyle]="{'background-image': 'url('+ cocktails[0].strDrinkThumb +')'}">
     <div>
         <h1 class="text-center">Welcome to CocktailsApp</h1>
         <form (ngSubmit)="onSubmit(form)" #form="ngForm">
@@ -16,3 +16,4 @@
         </div>
     </div>
 </div>
+<app-spinner *ngIf="!load"></app-spinner>

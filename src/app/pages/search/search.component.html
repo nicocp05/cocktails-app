@@ -1,8 +1,8 @@
-<div class="search-page">
-    <h1>Resultado de busqueda</h1>
+<div *ngIf="load" class="search-page animate__animated animate__fadeIn">
+    <h1 class="text-center">Resultado de busqueda</h1>
     <div class="row">
         <div *ngFor="let cocktail of cocktails " class="col-3">
-            <a href="#" class="card">
+            <a [routerLink]="['/cocktail', cocktail.idDrink]" class="card">
                 <img class="card-img" [src]="cocktail.strDrinkThumb" alt="Card image">
                 <div class="card-img-overlay d-flex justify-content-center align-items-center">
                     <h4 class="card-title">
@@ -13,3 +13,4 @@
         </div>
     </div>
 </div>
+<app-spinner *ngIf="!load"></app-spinner>

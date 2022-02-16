@@ -4,10 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { NgxSpinnerModule } from "ngx-spinner";
 import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 import { PagesModule } from './pages/pages.module';
 import { FormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment';
@@ -24,6 +25,7 @@ import { rootReducer } from './state/reducers/root.reducer';
     PagesModule,
     HttpClientModule,
     FormsModule,
+    NgxSpinnerModule,
     StoreModule.forRoot(rootReducer, {
       runtimeChecks: {
         strictActionImmutability: true,

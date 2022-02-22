@@ -5,7 +5,7 @@ import { AppState } from '../app-state';
 export const initialState: AppState = {
   cocktail: [],
   searchCocktail: undefined,
-  searchByName: false,
+  searchByName: true,
   cocktailDetail: undefined
 }
 

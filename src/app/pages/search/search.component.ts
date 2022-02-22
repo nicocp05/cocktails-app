@@ -1,9 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Cocktail } from 'src/app/interfaces/cocktail';
 import { CocktailsService } from 'src/app/services/cocktails.service';
-import { deactivateSearchByName } from 'src/app/state/actions/cocktail.actions';
 import { selectCocktailCollection } from 'src/app/state/selector/cocktail.selector';
 
 @Component({
@@ -11,7 +10,7 @@ import { selectCocktailCollection } from 'src/app/state/selector/cocktail.select
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit, OnDestroy {
+export class SearchComponent implements OnInit {
 
   public cocktails: Cocktail[] = [];
   public cocktail: string = '';
@@ -24,9 +23,10 @@ export class SearchComponent implements OnInit, OnDestroy {
               private route: ActivatedRoute) 
               {
 
-                this.cocktail = this.route.snapshot.params.name;
+                this.cocktail = this.route.snapshot.params.name; 
 
               }
+  
 
   ngOnInit(): void {
 
@@ -35,6 +35,8 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.searchByName ? this.searchCocktail(this.cocktail) : this.searchFirstLetter(this.cocktail);
 
   }
+
+  
 
   public getSearchByNameBoolean() {
     this.store.select(selectCocktailCollection)
@@ -61,10 +63,6 @@ export class SearchComponent implements OnInit, OnDestroy {
           this.load = true;
         }, 500);
       });
-  }
-
-  ngOnDestroy(): void {
-    this.store.dispatch(deactivateSearchByName());
   }
 
 }

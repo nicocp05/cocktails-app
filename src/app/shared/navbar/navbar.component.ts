@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -9,16 +7,9 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  public formValue: string = '';
-
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-
-  public onSubmit( form: NgForm ) {
-    this.formValue = form.value.search;
-    this.router.navigate(['/search', this.formValue]);
   }
 
 }

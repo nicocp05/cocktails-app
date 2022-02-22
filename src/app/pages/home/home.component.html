@@ -12,7 +12,7 @@
             <h2 class="text-center mt-5">Or browse By Name</h2>
         </div>
         <div class="mt-5">
-            <a [routerLink]="['/search', letter]" *ngFor="let letter of alphabet">  {{ letter | uppercase }}  </a>
+            <a [routerLink]="['/search', letter]" (click)="searchLetter()" *ngFor="let letter of alphabet">  {{ letter | uppercase }}  </a>
         </div>
     </div>
 </div>

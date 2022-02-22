@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Cocktail } from 'src/app/interfaces/cocktail';
 import { CocktailsService } from 'src/app/services/cocktails.service';
-import { searchByName } from 'src/app/state/actions/cocktail.actions';
+import { deactivateSearchByName, searchByName } from 'src/app/state/actions/cocktail.actions';
 
 @Component({
   selector: 'app-home',
@@ -32,6 +32,10 @@ export class HomeComponent implements OnInit {
     this.formValue = form.value.search;
     this.store.dispatch(searchByName());
     this.router.navigate(['/search', this.formValue]);
+  }
+
+  public searchLetter() {
+    this.store.dispatch(deactivateSearchByName());
   }
 
   public getCocktails(): void {
